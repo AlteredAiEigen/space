@@ -1,17 +1,17 @@
-name: Run App with Venv
+name: Sync to Hugging Face hub
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
-  build-and-run:
+  build-and-sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -36,5 +36,14 @@ jobs:
       - name: Run app.py
         run: |
           source venv/bin/activate
-          cd /workspaces/space
           python app.py
+
+      - name: Add remote
+        env:
+          HF: ${{ secrets.HF }}
+        run: git remote add space https://chanpreet007:$HF@huggingface.co/spaces/chanpreet007/MediEaseTTS
+
+      - name: Push to hub
+        env:
+          HF: ${{ secrets.HF }}
+        run: git push --force https://chanpreet007:$HF@huggingface.co/spaces/chanpreet007/MediEaseTTS main
