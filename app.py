@@ -14,6 +14,9 @@ import f5_tts.infer.infer_gradio
 # Set the voices directory
 f5_tts.infer.infer_gradio.VOICES_ROOT_DIR = voices_dir
 
+# For CI, we set USING_SPACES to False to avoid loading the chat model
+f5_tts.infer.infer_gradio.USING_SPACES = False
+
 # Original infer function
 original_infer = f5_tts.infer.infer_gradio.infer
 
@@ -29,9 +32,6 @@ def patched_infer(*args, **kwargs):
 # Replace the original function with our patched version
 f5_tts.infer.infer_gradio.infer = patched_infer
 
-# For Hugging Face Spaces, we need to set USING_SPACES
-f5_tts.infer.infer_gradio.USING_SPACES = True
-
 # Call _ensure_dir on the voices directory
 f5_tts.infer.infer_gradio._ensure_dir(voices_dir)
 
@@ -41,5 +41,6 @@ from f5_tts.infer.infer_gradio import app
 if __name__ == "__main__":
     print(f"Voices directory: {voices_dir}")
     print(f"Using voices directory in infer_gradio: {f5_tts.infer.infer_gradio.VOICES_ROOT_DIR}")
+    print(f"CI mode: USING_SPACES = {f5_tts.infer.infer_gradio.USING_SPACES}")
     # Launch the app with Gradio's queue
     app.queue().launch()
