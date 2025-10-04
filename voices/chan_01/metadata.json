@@ -1,0 +1,11 @@
+{
+  "voice_id": "chan_01",
+  "created_utc": "2025-09-15T10:03:48.260918Z",
+  "canonical_wav": "/home/ubuntu/voices/chan_01/canonical.wav",
+  "original_last": "/home/ubuntu/voices/chan_01/original/20250915-100348.m4a",
+  "audio": {
+    "sample_rate": 16000,
+    "duration_s": 20.672,
+    "num_samples": 330752
+  }
+}

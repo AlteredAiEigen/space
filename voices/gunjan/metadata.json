@@ -1,0 +1,11 @@
+{
+  "voice_id": "gunjan",
+  "created_utc": "2025-09-15T09:50:18.284707Z",
+  "canonical_wav": "/home/ubuntu/voices/gunjan/canonical.wav",
+  "original_last": "/home/ubuntu/voices/gunjan/original/20250915-095015.ogg",
+  "audio": {
+    "sample_rate": 16000,
+    "duration_s": 12.9178125,
+    "num_samples": 206685
+  }
+}

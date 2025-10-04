@@ -1,0 +1,11 @@
+{
+  "voice_id": "fm",
+  "created_utc": "2025-09-07T12:26:28.081684Z",
+  "canonical_wav": "/home/ubuntu/voices/fm/canonical.wav",
+  "original_last": "/home/ubuntu/voices/fm/original/20250907-122615.mp3",
+  "audio": {
+    "sample_rate": 16000,
+    "duration_s": 16.6286875,
+    "num_samples": 266059
+  }
+}
