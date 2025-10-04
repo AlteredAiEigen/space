@@ -1,0 +1,40 @@
+name: Run App with Venv
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Create virtual environment
+        run: python -m venv venv
+
+      - name: Activate venv and install requirements
+        run: |
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install F5-TTS as editable
+        run: |
+          source venv/bin/activate
+          cd F5-TTS
+          pip install -e .
+
+      - name: Run app.py
+        run: |
+          source venv/bin/activate
+          cd /workspaces/space
+          python app.py
