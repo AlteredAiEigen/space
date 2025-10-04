@@ -51,7 +51,7 @@ DEFAULT_TTS_MODEL = "F5-TTS_v1"
 tts_model_choice = DEFAULT_TTS_MODEL
 
 # Directory to persist cached/cloned reference voices
-VOICES_ROOT_DIR = "/home/ubuntu/voices"
+VOICES_ROOT_DIR = "./voices"
 
 def _ensure_dir(path: str):
     os.makedirs(path, exist_ok=True)
