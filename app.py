@@ -2,7 +2,18 @@ import os
 import sys
 
 # Add F5-TTS to Python path
-sys.path.append(os.path.join(os.path.dirname(__file__), "F5-TTS"))
+# sys.path.append(os.path.join(os.path.dirname(__file__), "F5-TTS"))
+current_dir = os.path.dirname(os.path.abspath(__file__))
+f5_tts_path = os.path.join(current_dir, "F5-TTS")
+if f5_tts_path not in sys.path:
+    sys.path.insert(0, f5_tts_path)
+
+# Path to 'src' folder inside F5-TTS
+src_path = os.path.join(current_dir, "F5-TTS", "src")
+
+# Add src_path to sys.path if not already added
+if src_path not in sys.path:
+    sys.path.insert(0, src_path)
 
 # Create voices directory
 voices_dir = os.path.join(os.path.dirname(__file__), "voices")
